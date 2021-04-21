@@ -1,0 +1,45 @@
+:root{
+    --main-color: #298582;
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.main-nav a,
+#user-icons a i{
+  color: #000;
+  transition: all 0.6s ease;
+}
+
+.main-nav a.active{
+  color: var(--main-color);
+}
+
+.main-nav a:hover,
+#user-icons a i:hover{
+  transform: scale(1.2);
+  color: var(--main-color);
+}
+
+#logo{
+    background-color: var(--main-color);
+}
+
+#user-icons{
+    width: 20%;
+}
+
+
+footer h6{
+  color: var(--main-color);
+}
+footer p{
+  font-size: 0.8em;
+  margin: 0;
+}
+footer a{
+  text-decoration: none;
+  color: #000;
+}

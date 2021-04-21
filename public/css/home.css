@@ -1,0 +1,22 @@
+#services-wrapper i{
+    color: var(--main-color);
+}
+.divider{
+    background-color: var(--main-color);
+}
+
+#new-arrivals-wrapper{
+  padding: 0 20px;
+}
+
+#new-arrivals-wrapper .card-header{
+    background-color: transparent;
+    color: var(--main-color);
+}
+#services-wrapper i{
+    transition: all 1s ease;
+}
+
+#services-wrapper i:hover{
+    transform: rotateY(360deg);
+}
