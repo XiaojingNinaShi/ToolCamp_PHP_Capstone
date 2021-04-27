@@ -20,6 +20,10 @@
     <link rel="stylesheet" href="css/shipment.css"/> 
   <?php elseif($slug==='contact') : ?>
     <link rel="stylesheet" href="css/contact.css"/> 
+  <?php elseif($slug==='register') : ?>
+    <link rel="stylesheet" href="css/register.css"/> 
+  <?php elseif($slug==='profile') : ?>
+    <link rel="stylesheet" href="css/profile.css"/> 
   <?php endif; ?>
 </head>
 <!--

@@ -1,3 +1,3 @@
 <?php
 $slug = 'contact';
-require __DIR__ . '/views/contact.php';
+require __DIR__ . '/../views/contact.php';

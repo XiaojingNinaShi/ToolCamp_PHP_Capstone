@@ -1,3 +1,3 @@
 <?php
 $slug = 'teas';
-require __DIR__ . '/views/teas.php';
+require __DIR__ . '/../views/teas.php';
