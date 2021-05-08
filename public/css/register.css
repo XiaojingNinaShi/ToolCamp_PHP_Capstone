@@ -1,0 +1,16 @@
+#sec-register{
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.errors{
+    border: 2px solid #f00;
+    padding: 5px;
+}
+
+.valid-feedback{
+    color: #0f0;
+}
+.invalid-feedback{
+    color: #f00;
+}

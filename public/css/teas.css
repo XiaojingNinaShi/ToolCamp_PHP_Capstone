@@ -1,0 +1,19 @@
+#teas-side-nav h4,
+#teas-side-nav a:hover{
+    color: var(--main-color);
+}
+
+#teas-side-nav a{
+    color: #000;
+    transition: all 0.6s ease;
+}
+
+#product-wrapper a{
+    text-decoration: none;
+    color:#555;
+    transition: all .4s ease;
+}
+
+#product-wrapper a:hover{
+    color: var(--main-color);
+}
