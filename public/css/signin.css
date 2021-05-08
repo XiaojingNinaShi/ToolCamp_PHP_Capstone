@@ -1,0 +1,7 @@
+#sign-in-form{
+    width: 400px;
+    min-height: 350px;
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    padding: 30px 50px;
+}

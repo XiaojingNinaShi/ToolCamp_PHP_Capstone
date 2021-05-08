@@ -1,0 +1,10 @@
+#shipment-side-nav a{
+    color: #000;
+    transition: all 0.6s ease;
+}
+
+#sec-shipment h3,
+#sec-shipment h4,
+#shipment-side-nav a:hover{
+    color: var(--main-color);
+}
