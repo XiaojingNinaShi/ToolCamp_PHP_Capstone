@@ -61,7 +61,7 @@ class Validator
   }
 
   /**
-   * validate email
+   * validate email by filter_var
    *
    * @param string $field
    * @return void
@@ -73,13 +73,19 @@ class Validator
     }
   }
 
-
+/**
+ * check if the email is unique( means it is different from all emails in database)
+ *
+ * @param string $field
+ * @return void
+ */
   public function validateUnique(string $field):void
   {
     if(getUserByEmail($this->array[$field])){
       $this->errors[$field][] = "$field is already exist. Please log in or use another email address to register";
     }
   }
+
   /**
    * validate phone number: North American phone number format
    *
@@ -94,7 +100,12 @@ class Validator
     }
   }
 
-
+/**
+ * validate address: can contain letters, numebrs, empty string, dash and period.
+ *
+ * @param string $field
+ * @return void
+ */
   function validateAddress(string $field):void
 {
     $pattern_address = "/^[A-Za-z0-9\ \-\,\.]+$/";
