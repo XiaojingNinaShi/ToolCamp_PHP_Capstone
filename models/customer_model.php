@@ -1,9 +1,16 @@
 <?php
 declare(strict_types=1);
+/**
+ * Insert new registered user info into database
+ *
+ * @param PDO $dbh
+ * @param array $post
+ * @return integer
+ */
 function insertCustomer(PDO $dbh, array $post):int
 {
     try{
-    //INSERT into database
+    //INSERT into database. This is for register page.
     $query = "INSERT INTO
                 customers
                 (
@@ -27,7 +34,6 @@ function insertCustomer(PDO $dbh, array $post):int
         ':postal_code' => $post['postal_code'],
         ':country' => $post['country']
     );
-    //this executes the INTSERT
     
     $stmt->execute($params);
     }catch(Exception $e){
@@ -37,6 +43,13 @@ function insertCustomer(PDO $dbh, array $post):int
 }
 
 
+/**
+ * Get user info by id. This is for profile page.
+ *
+ * @param integer $id
+ * @param PDO $dbh
+ * @return array
+ */
 function oneCustomer(int $id, PDO $dbh):array
 {
     try{
@@ -44,13 +57,11 @@ function oneCustomer(int $id, PDO $dbh):array
             name,email,phone,address,city,province,postal_code,country
             FROM customers 
             WHERE customers.id=:id";
-        //prepare the query
+ 
         $stmt = $dbh->prepare($query);
-        //create param array
         $params = array(
             ':id' => intval($id)
         );
-        //execute the query
         $stmt->execute($params);
         $customer = $stmt->fetch();
     }catch(Exception $e){
@@ -60,8 +71,13 @@ function oneCustomer(int $id, PDO $dbh):array
 }
 
 
-
-function getUserByEmail($email)
+/**
+ * Get user info by email address. This is for sign in page.
+ *
+ * @param string $email
+ * @return void
+ */
+function getUserByEmail(string $email)
 {
     global $dbh;
     $query = "SELECT id, email, password FROM customers WHERE email = :email LIMIT 1";

@@ -50,7 +50,7 @@ function self()
 /**
  * test if input is an integer
  *
- * @param [type] $str
+ * @param string $str
  * @return boolean
  */
 function int($str):bool
@@ -59,6 +59,13 @@ function int($str):bool
     return (string) intval($str) === $str;
 }
 
+/**
+ * display error for each field, if there are more than one, display the first one
+ *
+ * @param string $field
+ * @param array $errors
+ * @return void
+ */
 function error($field, &$errors)
 {
     if(!empty($errors[$field])){

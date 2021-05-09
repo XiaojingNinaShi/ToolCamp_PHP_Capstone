@@ -1,9 +1,14 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * Get all teas. This is for teas page.
+ *
+ * @param PDO $dbh
+ * @return array
+ */
 function allTeas(PDO $dbh):array
 {
-    //write the query and test it in mysql
     $query = "SELECT
         teas.id, 
         teas.name,
@@ -12,13 +17,19 @@ function allTeas(PDO $dbh):array
         teas.image
         FROM teas
         ORDER by teas.name";
-    //prepare the query
+
     $stmt = $dbh->query($query);
-    //execute the query
     $tea = $stmt->fetchAll();
     return $tea ?? [];
 }
 
+/**
+ * Get a certain tea info by id. This is for teainfo page.
+ *
+ * @param PDO $dbh
+ * @param integer $id
+ * @return array
+ */
 function oneTea(PDO $dbh, int $id):array
 {
     //write the query and test it in mysql
@@ -36,6 +47,12 @@ function oneTea(PDO $dbh, int $id):array
 }
 
 
+/**
+ * Get all types of teas.
+ *
+ * @param PDO $dbh
+ * @return array
+ */
 function allTypes(PDO $dbh):array
 {
     $query = "SELECT DISTINCT teas.type as name FROM teas";
@@ -43,6 +60,12 @@ function allTypes(PDO $dbh):array
     return $stmt->fetchAll();
 }
 
+/**
+ * Get all caffeines levles.
+ *
+ * @param PDO $dbh
+ * @return array
+ */
 function allCaffeines(PDO $dbh):array
 {
     $query = "SELECT DISTINCT teas.caffeine as name FROM teas";
@@ -50,6 +73,13 @@ function allCaffeines(PDO $dbh):array
     return $stmt->fetchAll();
 }
 
+/**
+ * Get all teas info by tea type
+ *
+ * @param PDO $dbh
+ * @param string $type
+ * @return array
+ */
 function allTeasbyType(PDO $dbh, string $type):array
 {
     $query = "SELECT
@@ -71,6 +101,13 @@ function allTeasbyType(PDO $dbh, string $type):array
     return $stmt->fetchAll() ?? [];
 }
 
+/**
+ * Get all teas info by caffeine level
+ *
+ * @param PDO $dbh
+ * @param string $caffeine
+ * @return array
+ */
 function allTeasbyCaffeine(PDO $dbh, string $caffeine):array
 {
     $query = "SELECT
