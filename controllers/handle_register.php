@@ -18,7 +18,11 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
     $v->validatePostalCode('postal_code');
     $v->validatePhone('phone');
     $v->validateEmail('email');
-    $v->validateUnique('email');
+
+    //Test 
+    $user=getUserByEmail($_POST['email']);
+    $v->validateUnique('email',$user);
+
     $v->validatePassword('password');
   
     if(count($v->getErrors())){

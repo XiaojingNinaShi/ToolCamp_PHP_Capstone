@@ -79,9 +79,9 @@ class Validator
  * @param string $field
  * @return void
  */
-  public function validateUnique(string $field):void
+  public function validateUnique(string $field, $user):void
   {
-    if(getUserByEmail($this->array[$field])){
+    if($user){
       $this->errors[$field][] = "$field is already exist. Please log in or use another email address to register";
     }
   }
