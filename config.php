@@ -1,5 +1,7 @@
 <?php
 include __DIR__ . '/views/includes/functions.php';
+require __DIR__ . '/classes/Log/ILogger.php';
+
 //Set common site variables
 $sitename = 'Nina\'s Tea';
 
@@ -45,7 +47,7 @@ try {
     echo '</pre>';
 }
 
-
+// For sign Out: run signedIn function
 if(!empty($_GET['signout'])) {
     if(signedIn()) {
         session_regenerate_id();
@@ -58,3 +60,15 @@ if(!empty($_GET['signout'])) {
     die;
 }
 
+// For logs: define LOGGER file/database (either one)
+define('LOGGER', 'file');
+// define('LOGGER', 'database');
+
+if(LOGGER === 'file'){
+    require __DIR__ . '/classes/Log/FileLogger.php';
+    $fh = fopen(__DIR__ . '/logs/events.log', 'a');
+    $logger = new FileLogger($fh);
+}elseif(LOGGER === 'database'){
+    require __DIR__ . '/classes/Log/DatabaseLogger.php';
+    $logger = new DatabaseLogger($dbh);
+}

@@ -1,4 +1,5 @@
-# Intermediate PHP Project
+# Object Oriented PHP Project
 ## Name: Xiaojing Shi
 ## Email: shi-x@webmail.uwinnipeg.ca
-## Link to capstone site: capstone.wdd-nina-shi.xyz
+## Link to Capstone: http://capstone.wdd-nina-shi.xyz
+## MySQL database backup included : ninastea.sql
