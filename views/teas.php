@@ -39,10 +39,10 @@
                     <p class="card-text text-center">$<?=e($tea['price'])?>/<?=e($tea['weight'])?></p>
                     <div class="row justify-content-around pb-1">
                       <span>
-                        <a href="/?page=add_to_bag_from_main&tea=<?=e($tea['id'])?>"><i class="bi bi-bag-plus-fill"></i></a>
+                        <a href="/?page=add_to_bag&tea_id=<?=e($tea['id'])?>"><i class="bi bi-bag-plus-fill"></i></a>
                       </span>
                       <span>
-                        <a href="/?page=add_to_wish_list_from_main&tea=<?=e($tea['id'])?>"><i class="bi bi-suit-heart-fill"></i></a>
+                        <a href="/?page=add_to_wish_list&tea_id=<?=e($tea['id'])?>"><i class="bi bi-suit-heart-fill"></i></a>
                       </span>
                     </div>
 

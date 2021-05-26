@@ -1,12 +1,22 @@
 <?php
 require __DIR__ . '/../models/teas_model.php';
-if(empty($_GET['tea'])){
+
+// There are 2 ways to add tea to wishlist
+//(1) from teas page by $_GET['tea_id]: default quantity is 1
+//(2) from teainfo page by $_GET['tea]
+if(empty($_GET['tea']) && empty($_GET['tea_id'])){
     flashMsg('danger','Please select a product to add.');
     header('Location:/?page=teas');
     die;
 }
 
-$tea = oneTea($dbh, $_GET['tea']);
+if($_GET['tea']){
+    $tea = oneTea($dbh, $_GET['tea']);
+}
+// if get from teas page, stay on teas page
+if($_GET['tea_id']){
+    $tea = oneTea($dbh, $_GET['tea_id']);
+}
 
 // Method 1:
 // $_SESSION['bag'][$tea['id']] = $tea;
@@ -23,5 +33,14 @@ $_SESSION['wish_list'][$tea['id']] = $item;
 // Method3: or make a class --- next step
 
 flashMsg('info','Product added to wish list.');
-header('Location:/?page=teainfo&tea='.$tea['id']);
-die;
+
+// if get from teasinfo page, stay on teasinfo page
+if($_GET['tea']){
+    header('Location:/?page=teainfo&tea='.$tea['id']);
+    die;
+}
+// if get from teas page, stay on teas page
+if($_GET['tea_id']){
+    header('Location:/?page=teas');
+    die;
+}

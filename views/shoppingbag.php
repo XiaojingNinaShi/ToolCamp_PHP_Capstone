@@ -39,8 +39,12 @@ $products = $bag;
                             <option value="9" <?=e($product['qty']) == 9? 'selected' : '';?>>9</option>
                         </select>
                         </td>
-
                         <td>$<?=e($product['price'])?></td>
+
+                        <!-- ERROR HERE: how to get option value when it changes ??? -->
+                        <!-- ERROR HERE: how to get option value when it changes ??? -->
+                        <!-- ERROR HERE: how to get option value when it changes ??? -->
+                        
                         <td>$<?=number_format(e($product['qty'] * $product['price']),2)?></td>
                         <td><a href="/?page=remove_from_bag&tea=<?=e($product['id'])?>" class="btn btn-sm btn-warning">Remove</a></td>
                     </tr>

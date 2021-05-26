@@ -80,7 +80,7 @@ function oneCustomer(int $id, PDO $dbh):array
 function getUserByEmail(string $email)
 {
     global $dbh;
-    $query = "SELECT id, email, password FROM customers WHERE email = :email LIMIT 1";
+    $query = "SELECT id, email, password, priv_level FROM customers WHERE email = :email LIMIT 1";
     $stmt = $dbh->prepare($query);
     $params = array (
         ':email' => $email
