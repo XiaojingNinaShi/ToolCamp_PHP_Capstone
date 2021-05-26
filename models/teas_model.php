@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 /**
- * Get all teas. This is for teas page.
+ * Get all teas basic info, sort by name. This is for teas page.
  *
  * @param PDO $dbh
  * @return array
@@ -22,6 +22,22 @@ function allTeas(PDO $dbh):array
     $tea = $stmt->fetchAll();
     return $tea ?? [];
 }
+
+/**
+ * Get all teas detailed info, sort by id. This is for Admin page.
+ *
+ * @param PDO $dbh
+ * @return array
+ */
+function allTeasDetailedOrderById(PDO $dbh):array
+{
+    $query = "SELECT * FROM teas ORDER by teas.id";
+
+    $stmt = $dbh->query($query);
+    $tea = $stmt->fetchAll();
+    return $tea ?? [];
+}
+
 
 /**
  * Get a certain tea info by id. This is for teainfo page.
@@ -127,4 +143,20 @@ function allTeasbyCaffeine(PDO $dbh, string $caffeine):array
     );
     $stmt->execute($params);
     return $stmt->fetchAll() ?? [];
+}
+
+
+function addTea():array
+{
+
+}
+
+function editTea():array
+{
+    
+}
+
+function deleteTea():array
+{
+    
 }

@@ -10,14 +10,21 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-person-circle fs-4"></i></a>
               <div class="dropdown-menu">
-                <?php if(!empty($_SESSION['priv_level'])) :?>
-                <a class="dropdown-item" href="/?page=profile">Profile</a>
-                <a class="dropdown-item" href="?signout=true">Sign Out</a>
+                <?php 
+                if(isset($_SESSION['priv_level']) && $_SESSION['priv_level'] == 0):
+                echo '<a class="dropdown-item" href="/?page=profile">Profile</a>';
+                echo '<a class="dropdown-item" href="?signout=true">Sign Out</a>';
 
-                <?php else :?>
-                <a class="dropdown-item" href="/?page=signin">Sign In</a>
-                <a class="dropdown-item" href="/?page=register">Register</a>
-                <?php endif ;?>
+                elseif(isset($_SESSION['priv_level']) && $_SESSION['priv_level'] == 1):
+                echo '<a class="dropdown-item" href="/?page=admin_view_products">Admin</a>';
+                echo '<a class="dropdown-item" href="?signout=true">Sign Out</a>';
+
+                else:
+                echo '<a class="dropdown-item" href="/?page=signin">Sign In</a>';
+                echo '<a class="dropdown-item" href="/?page=register">Register</a>';
+
+                endif;
+                ?>
               </div>
             </li>
 
@@ -25,3 +32,4 @@
           </ul>
         </div>
 </div>
+

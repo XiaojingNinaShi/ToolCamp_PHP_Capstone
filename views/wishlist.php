@@ -28,6 +28,7 @@ $products = $wish_list;
                             <th>Product</th>
                             <th>Price/unit</th>
                             <th>Remove</th>
+                            <th>Add to Bag</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,9 +40,17 @@ $products = $wish_list;
                                 <?=e($product['name'])?>
                             </td>
                             <td>$<?=e($product['price'])?></td>
-                            <td><a href="/?page=remove_from_wish_list&tea=<?=e($product['id'])?>" class="btn btn-sm btn-warning">Remove</a></td>
+                            <td><a href="/?page=remove_from_wish_list&tea=<?=e($product['id'])?>" class="btn btn-sm btn-danger">Remove</a></td>
+                            <td>
+                                <form action="/?page=add_to_bag" method="post" novalidate autocomplete="off">
+                                    <input type="hidden" name="tea_id" value="<?=e($product['id'])?>">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-sm btn-success">Add</button>
+                                </form>
+                            </td>
                         </tr>
                         <?php endforeach ;?>
+
                     </tbody>
                 </table>
             <?php endif;?>

@@ -29,14 +29,21 @@ try{
         'register',
         'handle_register',
         'profile',
+        'wishlist',
+        'add_to_wish_list',
+        'remove_from_wish_list',
+        'admin_view_products',
+        'admin_add_product',
+        'admin_edit_product',
+        'admin_remove_product',
+        'admin_view_customers',
+        'admin_view_orders',
+        'admin_view_logs',
         'signin',
         'verify_customer',
         'shoppingbag',
         'add_to_bag',
-        'remove_from_bag',
-        'wishlist',
-        'add_to_wish_list',
-        'remove_from_wish_list'
+        'remove_from_bag'
     );
 
     // if no page defined, set page to home (default)
