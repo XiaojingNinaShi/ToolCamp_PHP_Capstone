@@ -149,7 +149,7 @@ CREATE TABLE `teas` (
   `caffeine` enum('high','medium','low','caffeine-free') DEFAULT NULL,
   `origin` varchar(45) DEFAULT NULL,
   `expire_date` date DEFAULT NULL,
-  `organic` tinyint(4) DEFAULT NULL,
+  `organic` tinyint(1) NOT NULL DEFAULT 1,
   `ingredients` mediumtext DEFAULT NULL,
   `description` longtext DEFAULT NULL,
   `SKU` char(11) NOT NULL,
@@ -180,4 +180,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-25 22:04:31
+-- Dump completed on 2021-05-25 23:51:54
