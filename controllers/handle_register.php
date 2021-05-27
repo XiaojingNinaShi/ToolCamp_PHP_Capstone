@@ -4,6 +4,11 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
     include __DIR__ . '/../models/customer_model.php';
     include __DIR__ . '/../classes/validator.php';
     
+    $user_csrf = $_POST['csrf'] ?? '';
+    if($user_csrf !== $_SESSION['csrf']) {
+        die('CSRF token mismatch');
+    }
+
     //validate data
     $v = new Validator($_POST);
     $required = array('name','address','city','province','country','postal_code','phone','email','password','confirm_password');

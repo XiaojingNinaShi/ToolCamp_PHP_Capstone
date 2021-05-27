@@ -34,6 +34,9 @@ try{
         'remove_from_wish_list',
         'admin_view_products',
         'admin_add_product',
+        'handle_admin_add_product',
+        'handle_admin_edit_product',
+        'handle_admin_remove_product',
         'admin_edit_product',
         'admin_remove_product',
         'admin_view_customers',
@@ -43,7 +46,8 @@ try{
         'verify_customer',
         'shoppingbag',
         'add_to_bag',
-        'remove_from_bag'
+        'remove_from_bag',
+        'handle_search'
     );
 
     // if no page defined, set page to home (default)

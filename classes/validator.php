@@ -144,6 +144,36 @@ class Validator
   }
 
   /**
+   * validate SKU. Pattern: ABC-1234567 (three capital letters, a dash, seven numbers)
+   *
+   * @param string $field
+   * @return void
+   */
+  public function validateSKU(string $field):void
+  {
+    $pattern_sku = "/^[A-Z]{3}[-][\d]{7}$/";
+    if(!preg_match($pattern_sku, $this->array[$field])){
+        $this->errors[$field][] = "$field is not valid.";
+    }
+  }
+
+
+  /**
+   * Validate Decimal: Keep two decimal places
+   *
+   * @param string $field
+   * @return void
+   */
+  public function validateDecimal(string $field):void
+  {
+    $pattern_decimal = "/^[0-9]+(\\.[0-9]{2})?$/";
+    if(!preg_match($pattern_decimal, $this->array[$field])){
+        $this->errors[$field][] = "$field is not valid.";
+    }
+  }
+
+
+  /**
    * display all errors
    *
    * @return array $errors

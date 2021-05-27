@@ -5,7 +5,7 @@
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     max-width: 960px;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 .main-nav a,
@@ -19,7 +19,7 @@ body{
 }
 
 .main-nav a:hover,
-#user-icons a i:hover{
+#user-icons i:hover{
   transform: scale(1.2);
   color: var(--main-color);
 }
@@ -27,11 +27,6 @@ body{
 #logo{
     background-color: var(--main-color);
 }
-
-#user-icons{
-    width: 20%;
-}
-
 
 footer h6{
   color: var(--main-color);

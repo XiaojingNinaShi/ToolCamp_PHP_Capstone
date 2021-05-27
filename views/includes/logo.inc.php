@@ -1,12 +1,17 @@
 <div class="d-flex justify-content-between">
+
         <div class="d-inline-flex" id="logo">
           <a class="text-white nav-link fs-1 fw-bold fst-italic lh-1" href="/">NINAsTEA</a>
         </div>
 
         <div class="d-inline-flex justify-content-between" id="user-icons">
-          <ul class="nav">
-            <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-search fs-4"></i></a></li>
 
+          <form action="/?page=handle_search" method="post" class="form-inline">
+            <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+            <button class="btn" type="submit"><i class="bi bi-search fs-4"></i></button>
+          </form>
+
+          <ul class="nav">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-person-circle fs-4"></i></a>
               <div class="dropdown-menu">
@@ -28,8 +33,9 @@
               </div>
             </li>
 
-            <li class="nav-item"><a class="nav-link" href="/?page=shoppingbag"><i class="bi bi-bag-fill fs-4"></i></a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="/?page=shoppingbag"><i class="bi bi-bag-fill fs-4"></i></a>
+            </li>
           </ul>
         </div>
 </div>
-
