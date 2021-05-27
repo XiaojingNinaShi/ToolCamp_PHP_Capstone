@@ -3,7 +3,7 @@
     <h1>Add New Product</h1>
     <p>Please fill in all fields to add a new product.</p>
 
-    <form action="/?page=handle_admin_add_product" method="post" novalidate autocomplete="off">
+    <form action="/?page=handle_admin_add_product" enctype='multipart/form-data' method="post" novalidate autocomplete="off">
 
         <input type="hidden" name="csrf" value="<?=e($_SESSION['csrf'])?>">
 

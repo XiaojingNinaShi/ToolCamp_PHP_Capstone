@@ -160,11 +160,16 @@ function searchTea(PDO $dbh, string $search_term):array
 }
 
 
-
+/**
+ * Add a product: admin add product page.
+ *
+ * @param PDO $dbh
+ * @param array $post
+ * @return integer
+ */
 function addTea(PDO $dbh, array $post):int
 {
     try{
-    //INSERT into database. This is for register page.
     $query = "INSERT INTO
                 teas
                 (
@@ -189,7 +194,7 @@ function addTea(PDO $dbh, array $post):int
         ':ingredients' => $post['ingredients'],
         ':description' => $post['description'],
         ':SKU' => $post['sku'],
-        ':image' => $post['image']
+        ':image' => $post['image'] ?? 'default_tea_img.png'
     );
     
     $stmt->execute($params);
@@ -199,10 +204,64 @@ function addTea(PDO $dbh, array $post):int
     return intval($dbh->lastInsertId()) ?? 0;
 }
 
-function editTea():array
+function editTea(PDO $dbh, array $post):int
 {
+    try{
+        $image = '';
+        if(!empty($post['image'])){
+            $image = 'image = :image,';
+        }
+        
+        $query = "UPDATE teas
+                SET
+                name=:name,
+                price=:price,
+                weight=:weight,
+                type=:type,
+                caffeine=:caffeine,
+                origin=:origin,
+                expire_date=:expire_date,
+                organic=:organic,
+                ingredients=:ingredients,
+                description=:description,
+                SKU:SKU,
+                {$image}
+                WHERE
+                id=:id";
     
+        $stmt = $dbh->prepare($query);
+
+
+        $params = array(
+            ':name' => $post['name'],
+            ':price' => $post['price'],
+            ':weight' => $post['weight'],
+            ':type' => $post['type'],
+            ':caffeine' => $post['caffeine'],
+            ':origin' => $post['origin'],
+            ':expire_date' => $post['expire_date'],
+            ':organic' => $post['organic'],
+            ':ingredients' => $post['ingredients'],
+            ':description' => $post['description'],
+            ':SKU' => $post['sku'],
+            ':id' => $post['id']
+        );
+
+        if(!empty($post['image'])){
+            $params[':image'] = $post['image'];
+        }
+        
+        dd($query);
+        dd($params);
+        die;
+
+        $stmt->execute($params);
+        }catch(Exception $e){
+            echo $e->getMessage();
+        }
+        return $stmt->rowCount();
 }
+
 
 function deleteTea():array
 {
