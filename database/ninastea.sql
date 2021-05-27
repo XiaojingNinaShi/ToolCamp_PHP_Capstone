@@ -39,7 +39,7 @@ CREATE TABLE `customers` (
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'Rachel Green','rachel.green@gmail.com','$2y$10$PQU7Lyd9zalXGM2f78H0VegP7ewtB97XfXhwWGtjMO/7g8F2ZXg3m',30,'431-374-1353','510 Main St','Winnipeg','MB','R3B 1B9','CA',0,'2021-05-06 20:11:27',NULL,NULL),(2,'Monica Geller','monica.geller@gmail.com','$2y$10$PQU7Lyd9zalXGM2f78H0VegP7ewtB97XfXhwWGtjMO/7g8F2ZXg3m',33,'403-246-3950','800 Macleod Trail SE','Calgary','AB','T2G 5E6','CA',0,'2021-05-06 20:11:27',NULL,NULL),(3,'Phoebe Buffay','phoebe.buffay@gmail.com','$2y$10$PQU7Lyd9zalXGM2f78H0VegP7ewtB97XfXhwWGtjMO/7g8F2ZXg3m',31,'514-235-2236','275 Notre-Dame St. East','Montreal','QC','H2Y 1C6','CA',0,'2021-05-06 20:11:27',NULL,NULL),(4,'Joey Tribbiani','joey.tribbiani@gmail.com','$2y$10$PQU7Lyd9zalXGM2f78H0VegP7ewtB97XfXhwWGtjMO/7g8F2ZXg3m',37,'613-722-9480','110 Laurier Ave W','Ottawa','ON','K1P 1J1','CA',0,'2021-05-06 20:11:27',NULL,NULL),(5,'Chandler Bing','chandler.bing@gmail.com','$2y$10$PQU7Lyd9zalXGM2f78H0VegP7ewtB97XfXhwWGtjMO/7g8F2ZXg3m',40,'604-222-5623','453 W 12th Ave','Vancouver','BC','V5Y 1V4','CA',0,'2021-05-06 20:11:27',NULL,NULL),(6,'Nina','test@gmail.com','$2y$10$8mgS5g.a2NlBxWBCITrurefPmMnFHppHVpWwU5LsWR5.uGFNixx0e',NULL,'2041231234','Test Ave','Winnipeg','MB','T3T 3T3','canada',1,'2021-05-06 20:13:33',NULL,NULL),(7,'Test 2','test2@gmail.com','$2y$10$TA1MtOOzWVNU7wP7R31Cm.9vX.60TfsKjUtMMVYoXHqRkmo2ZOizO',NULL,'2041231234','Test Ave','Winnipeg','MB','T3T 3T3','canada',0,'2021-05-08 01:26:05',NULL,NULL);
+INSERT INTO `customers` VALUES (1,'Rachel Green','rachel.green@gmail.com','$2y$10$PQU7Lyd9zalXGM2f78H0VegP7ewtB97XfXhwWGtjMO/7g8F2ZXg3m',30,'431-374-1353','510 Main St','Winnipeg','MB','R3B 1B9','CA',0,'2021-05-06 20:11:27',NULL,NULL),(2,'Monica Geller','monica.geller@gmail.com','$2y$10$PQU7Lyd9zalXGM2f78H0VegP7ewtB97XfXhwWGtjMO/7g8F2ZXg3m',33,'403-246-3950','800 Macleod Trail SE','Calgary','AB','T2G 5E6','CA',0,'2021-05-06 20:11:27',NULL,NULL),(3,'Phoebe Buffay','phoebe.buffay@gmail.com','$2y$10$PQU7Lyd9zalXGM2f78H0VegP7ewtB97XfXhwWGtjMO/7g8F2ZXg3m',31,'514-235-2236','275 Notre-Dame St. East','Montreal','QC','H2Y 1C6','CA',0,'2021-05-06 20:11:27',NULL,NULL),(4,'Joey Tribbiani','joey.tribbiani@gmail.com','$2y$10$PQU7Lyd9zalXGM2f78H0VegP7ewtB97XfXhwWGtjMO/7g8F2ZXg3m',37,'613-722-9480','110 Laurier Ave W','Ottawa','ON','K1P 1J1','CA',0,'2021-05-06 20:11:27',NULL,NULL),(5,'Chandler Bing','chandler.bing@gmail.com','$2y$10$PQU7Lyd9zalXGM2f78H0VegP7ewtB97XfXhwWGtjMO/7g8F2ZXg3m',40,'604-222-5623','453 W 12th Ave','Vancouver','BC','V5Y 1V4','CA',0,'2021-05-06 20:11:27',NULL,NULL),(6,'Admin','test@gmail.com','$2y$10$8mgS5g.a2NlBxWBCITrurefPmMnFHppHVpWwU5LsWR5.uGFNixx0e',NULL,'2041231234','Test Ave','Winnipeg','MB','T3T 3T3','canada',1,'2021-05-06 20:13:33',NULL,NULL),(7,'Nina','test2@gmail.com','$2y$10$TA1MtOOzWVNU7wP7R31Cm.9vX.60TfsKjUtMMVYoXHqRkmo2ZOizO',NULL,'2041231234','Test Ave','Winnipeg','MB','T3T 3T3','canada',0,'2021-05-08 01:26:05',NULL,NULL);
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,7 +157,8 @@ CREATE TABLE `teas` (
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `name` (`name`,`ingredients`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -180,4 +181,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-25 23:51:54
+-- Dump completed on 2021-05-26 20:25:47
