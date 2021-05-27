@@ -146,9 +146,57 @@ function allTeasbyCaffeine(PDO $dbh, string $caffeine):array
 }
 
 
-function addTea():array
+function searchTea(PDO $dbh, string $search_term):array
 {
+    $query = "SELECT * FROM teas 
+            WHERE MATCH(name, ingredients)
+            AGAINST(:search_term IN NATURAL LANGUAGE MODE)";
+    $stmt = $dbh->prepare($query);
+    $params = array(
+        ':search_term' => $search_term
+    );
+    $stmt->execute($params);
+    return $stmt->fetchAll() ?? [];
+}
 
+
+
+function addTea(PDO $dbh, array $post):int
+{
+    try{
+    //INSERT into database. This is for register page.
+    $query = "INSERT INTO
+                teas
+                (
+                    name,price,weight,type,caffeine,origin,expire_date,organic,ingredients,description,SKU,image
+                )
+                VALUES
+                (
+                    :name,:price,:weight,:type,:caffeine,:origin,:expire_date,:organic,:ingredients,:description,:SKU,:image
+                )
+                ";
+
+    $stmt = $dbh->prepare($query);
+    $params = array(
+        ':name' => $post['name'],
+        ':price' => $post['price'],
+        ':weight' => $post['weight'],
+        ':type' => $post['type'],
+        ':caffeine' => $post['caffeine'],
+        ':origin' => $post['origin'],
+        ':expire_date' => $post['expire_date'],
+        ':organic' => $post['organic'],
+        ':ingredients' => $post['ingredients'],
+        ':description' => $post['description'],
+        ':SKU' => $post['sku'],
+        ':image' => $post['image']
+    );
+    
+    $stmt->execute($params);
+    }catch(Exception $e){
+        echo $e->getMessage();
+    }
+    return intval($dbh->lastInsertId()) ?? 0;
 }
 
 function editTea():array

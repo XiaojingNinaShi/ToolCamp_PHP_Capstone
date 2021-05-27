@@ -4,6 +4,9 @@
 
     <form action="/?page=handle_register" method="post" novalidate autocomplete="off" id="register_form">
         <p>Please fill in all fields to be successfully registered.</p>
+
+        <input type="hidden" name="csrf" value="<?=e($_SESSION['csrf'])?>">
+
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" name="name" id="name" value="<?=e($post['name'] ?? '')?>">

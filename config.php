@@ -10,6 +10,11 @@ ob_start();
 session_start();
 
 // Set sessions
+if(empty($_SESSION['csrf'])) {
+    $token = base64_encode(openssl_random_pseudo_bytes(32));
+    $_SESSION['csrf'] = $token;
+}
+
 $errors = $_SESSION['errors'] ?? [];
 $_SESSION['errors'] = [];
 

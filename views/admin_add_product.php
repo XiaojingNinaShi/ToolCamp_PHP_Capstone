@@ -4,13 +4,16 @@
     <p>Please fill in all fields to add a new product.</p>
 
     <form action="/?page=handle_admin_add_product" method="post" novalidate autocomplete="off">
+
+        <input type="hidden" name="csrf" value="<?=e($_SESSION['csrf'])?>">
+
         <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control" name="name" id="name" value="<?=e($post['name'] ?? '')?>">
             </div>
             <div class="invalid-feedback d-block ml-3">
-                ERROR<?=raw(error('name',$errors))?>  
+                <?=raw(error('name',$errors))?>  
             </div>      
         </div>
 
@@ -18,6 +21,9 @@
             <label for="price" class="col-sm-2 col-form-label">Price</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control" name="price" id="price" value="<?=e($post['price'] ?? '')?>">
+            </div>
+            <div class="col-sm-5">
+                <p>Correct to two decimal places</p>
             </div>
             <div class="invalid-feedback d-block ml-3">
                 <?=raw(error('price',$errors))?>  
@@ -94,20 +100,20 @@
         <div class="form-group row">
             <label for="organic" class="col-sm-2 col-form-label">Organic</label>
             <div class="col-sm-5">
-                <select class="form-control" name="caffeine" id="caffeine">
+                <select class="form-control" name="organic" id="organic">
                     <option value="1" <?=(!empty($post['organic']) && $post['organic']==='1') ? 'selected' : '';?>>yes</option>
                     <option value="0" <?=(!empty($post['organic']) && $post['organic']==='0') ? 'selected' : '';?>>no</option>
                 </select>
             </div>
             <div class="invalid-feedback d-block ml-3">
-                <?=raw(error('caffeine',$errors))?>  
+                <?=raw(error('organic',$errors))?>  
             </div>      
         </div>
 
         <div class="form-group row">
             <label for="ingredients" class="col-sm-2 col-form-label">Ingredients</label>
             <div class="col-sm-5">
-                <textarea class="form-control" name="ingredients" id="ingredients" value="<?=e($post['ingredients'] ?? '')?>"></textarea>
+                <textarea class="form-control" name="ingredients" id="ingredients" placeholder="<?=e($post['ingredients'] ?? '')?>"></textarea>
             </div>
             <div class="invalid-feedback d-block ml-3">
                 <?=raw(error('ingredients',$errors))?>  
@@ -117,7 +123,7 @@
         <div class="form-group row">
             <label for="description" class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-5">
-                <textarea class="form-control" name="description" id="description" value="<?=e($post['description'] ?? '')?>"></textarea>
+                <textarea class="form-control" name="description" id="description" placeholder="<?=e($post['description'] ?? '')?>"></textarea>
             </div>
             <div class="invalid-feedback d-block ml-3">
                 <?=raw(error('description',$errors))?>  
@@ -128,6 +134,9 @@
             <label for="sku" class="col-sm-2 col-form-label">SKU</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control" name="sku" id="sku" value="<?=e($post['sku'] ?? '')?>">
+            </div>
+            <div class="col-sm-5">
+                <p>Format: ABC-1234567</p>
             </div>
             <div class="invalid-feedback d-block ml-3">
                 <?=raw(error('sku',$errors))?>  
