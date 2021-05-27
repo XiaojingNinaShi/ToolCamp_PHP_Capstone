@@ -30,7 +30,9 @@
                     <?php foreach($products as $product) : ?>
                         
                     <tr>
-                        <td><img src="images/<?=e($product['image'])?>" alt="<?=e($product['name'])?>" style="width:50px;height:50px;"></td>
+                        <td>
+                            <img src="images/<?=e($product['image'])?>" alt="<?=e($product['name'])?>" style="width:50px;height:50px;">
+                        </td>
                         <td><?=e($product['id'])?></td>
                         <td><?=e($product['name'])?></td>
                         <td><?=e($product['price'])?></td>

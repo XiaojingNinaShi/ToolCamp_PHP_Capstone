@@ -8,13 +8,13 @@ class Validator
    *
    * @var array
    */
-  private $array;
+  private $array = [];
   /**
    * array to hold error messages
    *
    * @var array
    */
-  private $errors;
+  private $errors = [];
 
   public function __construct (array $arr)
   {
