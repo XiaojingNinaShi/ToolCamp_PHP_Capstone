@@ -29,16 +29,17 @@ try{
         'register',
         'handle_register',
         'profile',
+        'orders',
         'wishlist',
         'add_to_wish_list',
         'remove_from_wish_list',
         'admin_view_products',
         'admin_add_product',
         'handle_admin_add_product',
-        'handle_admin_edit_product',
-        'handle_admin_remove_product',
         'admin_edit_product',
+        'handle_admin_edit_product',
         'admin_remove_product',
+        'handle_admin_remove_product',
         'admin_view_customers',
         'admin_view_orders',
         'admin_view_logs',
@@ -46,8 +47,12 @@ try{
         'verify_customer',
         'shoppingbag',
         'add_to_bag',
+        'update_bag',
         'remove_from_bag',
-        'handle_search'
+        'handle_search',
+        'checkout',
+        'handle_checkout',
+        'confirm_order'
     );
 
     // if no page defined, set page to home (default)

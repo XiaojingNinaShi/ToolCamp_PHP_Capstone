@@ -60,3 +60,18 @@ footer a{
   color: #fff;
   background-color: var(--secondary-color);
 }
+
+
+.user_side_nav{
+  border: 1px solid #eee;
+}
+
+.user_side_nav h4,
+.user_side_nav a:hover{
+  color: var(--main-color);
+}
+
+.user_side_nav a{
+  color: #000;
+  transition: all 0.6s ease;
+}

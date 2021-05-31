@@ -32,7 +32,14 @@ if(($user['priv_level']=='0') && password_verify($_POST['password'], $user['pass
     flashMsg('success', 'You have successfully Signed in!');    
     // redirect to profile page
     $_SESSION['customer_id'] = $user['id'];
-    header('Location:/?page=profile');
+    // direct to profile page if user directly sign in
+    if(empty($_SESSION['bag'])){
+        header('Location:/?page=profile');
+    }else{
+        // direct to shopping bag if user has added items to shopping bag before sign in
+        header('Location:/?page=shoppingbag');
+    }
+    
     die;
 } 
 
