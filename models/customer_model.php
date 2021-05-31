@@ -70,6 +70,21 @@ function oneCustomer(int $id, PDO $dbh):array
     return (is_array($customer)) ? $customer : [];
 }
 
+/**
+ * All customers
+ *
+ * @param PDO $dbh
+ * @return array
+ */
+function allCustomersOrderByDate(PDO $dbh):array
+{
+    $query = "SELECT * FROM customers WHERE deleted_at IS NULL ORDER BY created_at DESC";
+    $stmt = $dbh->query($query);
+    $customers = $stmt->fetchAll();
+    return $customers ?? [];
+}
+
+
 
 /**
  * Get user info by email address. This is for sign in page.
@@ -80,7 +95,7 @@ function oneCustomer(int $id, PDO $dbh):array
 function getUserByEmail(string $email)
 {
     global $dbh;
-    $query = "SELECT id, email, password, priv_level FROM customers WHERE email = :email LIMIT 1";
+    $query = "SELECT * FROM customers WHERE email = :email LIMIT 1";
     $stmt = $dbh->prepare($query);
     $params = array (
         ':email' => $email

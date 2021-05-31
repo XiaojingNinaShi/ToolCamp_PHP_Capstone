@@ -172,6 +172,30 @@ class Validator
     }
   }
 
+  public function validateCardNumber(string $field):void
+  {
+    $pattern_card = "/^[0-9]{13,19}$/";
+    if(!preg_match($pattern_card, $this->array[$field])){
+        $this->errors[$field][] = "$field is not valid. It must be between 13 to 19 digits long";
+    }
+  }
+
+  public function validateCardExpireDate(string $field):void
+  {
+    $pattern_card = "/^[0,1]{1}[0-9]{1}[\/][0-9]{1}[0-9]{1}$/";
+    if(!preg_match($pattern_card, $this->array[$field])){
+        $this->errors[$field][] = "$field is not valid.";
+    }
+  }
+
+  public function validateSecurityCode(string $field):void
+  {
+    $pattern_cvv = "/^[0-9]{3,4}$/";
+    if(!preg_match($pattern_cvv, $this->array[$field])){
+        $this->errors[$field][] = "$field is not valid. It must be 3 or 4 digits long";
+    }
+  }
+
 
   /**
    * display all errors

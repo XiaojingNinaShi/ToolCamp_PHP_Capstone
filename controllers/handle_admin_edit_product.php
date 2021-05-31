@@ -36,11 +36,13 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
             'image/jpeg',
             'image/webp'
         );
+
         //validate allowed file type
         if(in_array($mime, $allowed)) {
             // Attempt to upload it if we do
             $to = realpath(__DIR__ . '/../public/images/') . '/' . $_FILES['image']['name'];
             $from = $_FILES['image']['tmp_name'];
+       
             if(file_exists($to)) {
                 flashMsg('danger','Image already exists.');
             } else {
@@ -55,9 +57,6 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
             // Set an error if we don't
             flashMsg('danger','Illegal file type: must be valid image.');
         }
-    }else{
-        // if the image is not changed, keep same image
-        $_POST['image'] = $_FILES['image']['name'];
     }
     
   
@@ -70,7 +69,7 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
     }else{
         //if no errors, direct to admin view products page
         try{
-            $updated_tea = EditTea($dbh,$_POST);
+            $updated_tea = editTea($dbh,$_POST);
             if($updated_tea){
                 header('Location:/?page=admin_view_products');
                 flashMsg('success', 'You have successfully updated the product!');  

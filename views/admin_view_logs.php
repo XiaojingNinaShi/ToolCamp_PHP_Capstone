@@ -12,7 +12,15 @@
     </div>
 
     <div  class="col-9 my-4" id="profile_info">
-        <h1>All Logs</h1>
+        <h1 class="mb-3">Most Rencent 10 Logs</h1>
+        <table class="table table-striped table-bordered">
+            <?php
+                for($i=0;$i<10;$i++){
+                    $line = $file[$i];
+                    echo "<tr><td>$line</td></tr>";
+                }
+            ?>
+        </table>
     </div>
 </div>
 </section>

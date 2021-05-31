@@ -12,8 +12,8 @@
     </div>
 
     <div  class="col-9 my-4" id="profile_info">
-        <h1>All Products</h1>
-        <div><a href="/?page=admin_add_product" class="btn btn-primary my-3">Add New Product</a></div>
+        <h1 class="mb-3">All Products</h1>
+        <div><a href="/?page=admin_add_product" class="btn btn-primary mb-3">Add New Product</a></div>
         <table class="table border">
                 <thead>
                     <tr class="table-light">
@@ -38,7 +38,7 @@
                         <td><?=e($product['price'])?></td>
                         <td><?=e($product['type'])?></td>
                         <td><a href="/?page=admin_edit_product&tea=<?=e($product['id'])?>" class="btn btn-sm btn-warning">Edit</a></td>
-                        <td><a href="/?page=admin_remove_product&tea=<?=e($product['id'])?>" class="btn btn-sm btn-danger">Remove</a></td>
+                        <td><a href="/?page=handle_admin_remove_product&tea=<?=e($product['id'])?>" class="btn btn-sm btn-danger">Remove</a></td>
                     </tr>
                     <?php endforeach ;?>
                 </tbody>

@@ -16,6 +16,7 @@ function allTeas(PDO $dbh):array
         teas.weight,
         teas.image
         FROM teas
+        WHERE deleted_at IS NULL
         ORDER by teas.name";
 
     $stmt = $dbh->query($query);
@@ -31,7 +32,7 @@ function allTeas(PDO $dbh):array
  */
 function allTeasDetailedOrderById(PDO $dbh):array
 {
-    $query = "SELECT * FROM teas ORDER by teas.id";
+    $query = "SELECT * FROM teas WHERE deleted_at IS NULL ORDER by teas.id";
 
     $stmt = $dbh->query($query);
     $tea = $stmt->fetchAll();
@@ -49,7 +50,7 @@ function allTeasDetailedOrderById(PDO $dbh):array
 function oneTea(PDO $dbh, int $id):array
 {
     //write the query and test it in mysql
-    $query = "SELECT * FROM teas WHERE teas.id = :id";
+    $query = "SELECT * FROM teas WHERE deleted_at IS NULL AND teas.id = :id";
     //prepare the query
     $stmt = $dbh->prepare($query);
     //create param array
@@ -71,7 +72,7 @@ function oneTea(PDO $dbh, int $id):array
  */
 function allTypes(PDO $dbh):array
 {
-    $query = "SELECT DISTINCT teas.type as name FROM teas";
+    $query = "SELECT DISTINCT teas.type as name FROM teas WHERE deleted_at IS NULL";
     $stmt = $dbh->query($query);
     return $stmt->fetchAll();
 }
@@ -84,7 +85,7 @@ function allTypes(PDO $dbh):array
  */
 function allCaffeines(PDO $dbh):array
 {
-    $query = "SELECT DISTINCT teas.caffeine as name FROM teas";
+    $query = "SELECT DISTINCT teas.caffeine as name FROM teas WHERE deleted_at IS NULL";
     $stmt = $dbh->query($query);
     return $stmt->fetchAll();
 }
@@ -107,6 +108,8 @@ function allTeasbyType(PDO $dbh, string $type):array
         teas.type
         FROM teas
         WHERE teas.type = :type
+        AND
+        deleted_at IS NULL
         ORDER by teas.name";
 
     $stmt = $dbh->prepare($query);
@@ -135,6 +138,8 @@ function allTeasbyCaffeine(PDO $dbh, string $caffeine):array
         teas.caffeine
         FROM teas
         WHERE teas.caffeine = :caffeine
+        AND
+        deleted_at IS NULL
         ORDER by teas.name";
 
     $stmt = $dbh->prepare($query);
@@ -149,7 +154,9 @@ function allTeasbyCaffeine(PDO $dbh, string $caffeine):array
 function searchTea(PDO $dbh, string $search_term):array
 {
     $query = "SELECT * FROM teas 
-            WHERE MATCH(name, ingredients)
+            WHERE deleted_at IS NULL
+            AND
+            MATCH(name, ingredients)
             AGAINST(:search_term IN NATURAL LANGUAGE MODE)";
     $stmt = $dbh->prepare($query);
     $params = array(
@@ -207,30 +214,30 @@ function addTea(PDO $dbh, array $post):int
 function editTea(PDO $dbh, array $post):int
 {
     try{
-        $image = '';
+        $image = ' ';
         if(!empty($post['image'])){
-            $image = 'image = :image,';
+            $image = 'image = :image';
         }
         
         $query = "UPDATE teas
                 SET
-                name=:name,
-                price=:price,
-                weight=:weight,
-                type=:type,
-                caffeine=:caffeine,
-                origin=:origin,
-                expire_date=:expire_date,
-                organic=:organic,
-                ingredients=:ingredients,
-                description=:description,
-                SKU:SKU,
+                name = :name,
+                price = :price,
+                weight = :weight,
+                type = :type,
+                caffeine = :caffeine,
+                origin = :origin,
+                expire_date = :expire_date,
+                organic = :organic,
+                ingredients = :ingredients,
+                description = :description,
+                SKU = :SKU,
                 {$image}
                 WHERE
-                id=:id";
+                teas.id = :id
+                ";
     
         $stmt = $dbh->prepare($query);
-
 
         $params = array(
             ':name' => $post['name'],
@@ -244,16 +251,12 @@ function editTea(PDO $dbh, array $post):int
             ':ingredients' => $post['ingredients'],
             ':description' => $post['description'],
             ':SKU' => $post['sku'],
-            ':id' => $post['id']
+            ':id' => intval($post['id'])
         );
 
         if(!empty($post['image'])){
             $params[':image'] = $post['image'];
         }
-        
-        dd($query);
-        dd($params);
-        die;
 
         $stmt->execute($params);
         }catch(Exception $e){
@@ -263,7 +266,13 @@ function editTea(PDO $dbh, array $post):int
 }
 
 
-function deleteTea():array
+function removeTea($dbh, $id):int
 {
-    
+    $query = "UPDATE teas SET deleted_at = CURRENT_TIMESTAMP WHERE teas.id = :id";
+    $stmt = $dbh->prepare($query);
+    $params = array(
+        ':id' =>intval($id)
+    );
+    $stmt->execute($params);
+    return $stmt->rowCount();
 }

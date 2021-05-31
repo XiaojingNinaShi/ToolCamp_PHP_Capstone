@@ -146,7 +146,7 @@
         <div class="form-group row">
             <label for="image" class="col-sm-2 col-form-label">Image</label>
             <div class="col-sm-5">
-                <input type="file" class="form-control-file" name="image" id="image" value="<?=e($post['image'] ?? '')?>">
+                <input type="file" class="form-control-file" name="image" id="image">
             </div>
             <div class="invalid-feedback d-block ml-3">
                 <?=raw(error('image',$errors))?>  
