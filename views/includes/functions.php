@@ -76,7 +76,7 @@ function error($field, &$errors)
 }
 
 /**
- * test if user signed in
+ * test if a user/admin is signed in
  *
  * @return void
  */
@@ -89,6 +89,33 @@ function signedIn()
 }
 
 /**
+ * Check $_SESSION['priv_level']
+ *
+ * @return void
+ */
+function userSignedIn()
+{
+    if($_SESSION['priv_level'] == 2) {
+        return true;
+    }
+    return false;
+}
+
+/**
+ * Check $_SESSION['priv_level']
+ *
+ * @return void
+ */
+function adminSignedIn()
+{
+    if($_SESSION['priv_level'] == 1) {
+        return true;
+    }
+    return false;
+}
+
+
+/**
  * set flash info in session
  *
  * @param string $class
@@ -98,4 +125,19 @@ function signedIn()
 function flashMsg(string $class, string $message)
 {
     $_SESSION['flash'][$class] = $message;
+}
+
+/**
+ * Check if two id are same
+ *
+ * @param string $id1
+ * @param string $id2
+ * @return void
+ */
+function mineOrder(string $id1, string $id2)
+{
+    if($id1 == $id2) {
+        return true;
+    }
+    return false;
 }

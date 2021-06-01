@@ -2,7 +2,7 @@
 //if we have a POST request
 if('POST' === $_SERVER['REQUEST_METHOD']){
     include __DIR__ . '/../models/teas_model.php';
-    $slug = 'teas';
+    $slug = 'search_teas';
     $search_stem = $_POST['search'] ?? '';
     $teas = searchTea($dbh, $search_stem);
 

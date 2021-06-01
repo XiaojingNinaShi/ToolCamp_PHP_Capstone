@@ -1,4 +1,10 @@
 <?php
+// if not signed in
+if(!signedIn() || !userSignedIn()){
+    flashMsg('danger','Please sign in to proceed to checkout.');
+    header('Location:/?page=signin');
+    die;
+}
 //if we have a POST request
 if('POST' === $_SERVER['REQUEST_METHOD']){
     include __DIR__ . '/../models/customer_model.php';

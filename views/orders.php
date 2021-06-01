@@ -36,7 +36,7 @@
                     <td><?=e($order['pst'])?></td>
                     <td><?=e($order['total'])?></td>
                     <td><?=e($order['order_date'])?></td>
-                    <td><a href="/?page=orders" class="btn btn-sm btn-success">View</a></td>
+                    <td><a href="/?page=confirm_order&order=<?=e($order['id'])?>" class="btn btn-sm btn-success">View</a></td>
                 </tr>
                 <?php endforeach ;?>
             </tbody>

@@ -11,21 +11,21 @@
       <div class="row row-cols-1 row-cols-3 gx-5" id="new-arrivals-wrapper">
         <div class="col">
           <div class="card">
-            <div class="card-header fw-bold text-center"><h4>Ginger Honey</h4></div>
+            <div class="card-header fw-bold text-center"><a href="/?page=teainfo&tea=13"><h4>Ginger Honey</h4></a></div>
             <img class="p-4" src="images/ginger_honey.jpg" alt=""/>
           </div>
         </div>
 
         <div class="col">
           <div class="card">
-            <div  class="card-header fw-bold text-center"><h4>Cherry Blossom</h4></div>
-            <img class="p-4" src="images/cherry_blossom.jpg" alt=""/>
+            <div  class="card-header fw-bold text-center"><a href="/?page=teainfo&tea=11"><h4>Pink Flamingo</h4></a></div>
+            <img class="p-4" src="images/pink_flamingo.jpg" alt=""/>
           </div>
         </div>
 
         <div class="col">
           <div class="card">
-            <div class="card-header fw-bold text-center"><h4>Cranberry Pear</h4></div>
+            <div class="card-header fw-bold text-center"><a href="/?page=teainfo&tea=4"><h4>Cranberry Pear</h4></a></div>
             <img class="p-4" src="images/cranberry_pear.jpg" alt=""/>
           </div>
         </div>

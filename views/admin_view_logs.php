@@ -16,7 +16,7 @@
         <table class="table table-striped table-bordered">
             <?php
                 for($i=0;$i<10;$i++){
-                    $line = $file[$i];
+                    $line = $log[$i]['event'];
                     echo "<tr><td>$line</td></tr>";
                 }
             ?>
@@ -24,3 +24,4 @@
     </div>
 </div>
 </section>
+<?php include __DIR__ . '/includes/footer.inc.php'; ?>

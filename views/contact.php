@@ -3,11 +3,11 @@
 
       <div class="col-3" id="contact-side-nav">
         <nav class="nav flex-column">
-          <h5>Call Us</h5>
+          <h5 style="color: var(--main-color);">Call Us</h5>
           <p>Manitoba: 204-123-6666 Toll Free: 1-888-2575</p>
-          <h5>Open Hours</h5>
+          <h5 style="color: var(--main-color);">Open Hours</h5>
           <p>We are open Monday to Sunday from 11am to 9pm.</p>
-          <h5>Address</h5>
+          <h5 style="color: var(--main-color);">Address</h5>
           <p>Address: 123 Maple Street, Winnipeg MB </p>
         </nav>
       </div>
@@ -15,7 +15,7 @@
       <div class="col-1"></div>
 
       <div class="col">
-        <h4 class="pb-3">How Can We Help You?</h4>
+        <h4 class="pb-3" style="color: var(--main-color);">How Can We Help You?</h4>
         <p>Your questions and comments are appreciated. You’ll find the answers to most of your questions in our <a href="#">Frequently Asked Questions</a></p>
         <!-- Here comes the form-->
         <form 

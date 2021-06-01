@@ -40,6 +40,7 @@ try{
         'handle_admin_edit_product',
         'admin_remove_product',
         'handle_admin_remove_product',
+        'handle_admin_search',
         'admin_view_customers',
         'admin_view_orders',
         'admin_view_logs',
