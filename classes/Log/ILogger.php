@@ -9,7 +9,6 @@
 
 interface ILogger
 {
-
 	public function write($event);
-
+	public function get($num);
 }

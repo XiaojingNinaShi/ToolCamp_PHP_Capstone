@@ -61,12 +61,17 @@
         <span><?=e($user['phone'])?></span>
     </div>
 
+    <?php if(!empty($payment)) :?>
     <div class="bg-light mt-3"><h3>3. Payment Info</h3></div>
     <div>
-        
         <span>Credit Card Ending With : <?=e(substr($payment['card_number'] ,-4))?></span> </br>
         <span>Name On Card: <?=e($payment['name_on_card'])?></span> </br>
         <span>Order Date: <?=e($order['order_date'])?></span>
+    </div>
+    <?php endif;?>
+
+    <div class="mt-5 d-flex justify-content-center">
+        <a href="/?page=orders" class="btn btn-main col-4">OK</a>
     </div>
 </section>
 <?php require  __DIR__ . '/includes/footer.inc.php'; ?>

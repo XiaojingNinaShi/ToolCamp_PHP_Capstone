@@ -25,9 +25,9 @@ $user = getUserByEmail($_POST['email']);
 // password: MYP@SSWORD1 
 // after hashed: $2y$10$PQU7Lyd9zalXGM2f78H0VegP7ewtB97XfXhwWGtjMO/7g8F2ZXg3m
 
-// if priv_level is 0, verify customer log in, direct to customer profile page
-if(($user['priv_level']=='0') && password_verify($_POST['password'], $user['password'])) {  
-    $_SESSION['priv_level'] = 0;
+// if priv_level is 2, verify customer log in, direct to customer profile page
+if(($user['priv_level']=='2') && password_verify($_POST['password'], $user['password'])) {  
+    $_SESSION['priv_level'] = 2;
     $_SESSION['user'] = $user['email'];
     flashMsg('success', 'You have successfully Signed in!');    
     // redirect to profile page
@@ -39,10 +39,8 @@ if(($user['priv_level']=='0') && password_verify($_POST['password'], $user['pass
         // direct to shopping bag if user has added items to shopping bag before sign in
         header('Location:/?page=shoppingbag');
     }
-    
     die;
 } 
-
 
 // if priv_level is 1, verify admin log in, direct to back end admin page
 if(($user['priv_level']=='1') && password_verify($_POST['password'], $user['password'])) {  

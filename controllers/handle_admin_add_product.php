@@ -1,4 +1,11 @@
 <?php
+// if not sign in as an admin user, redirect to sing in page
+if(!signedIn() || !adminSignedIn()){
+    flashMsg('danger','Please sign in as an ADMIN user.');
+    header('Location:/?page=signin');
+    die;
+}
+
 //if we have a POST request
 if('POST' === $_SERVER['REQUEST_METHOD']){
     include __DIR__ . '/../models/teas_model.php';
@@ -57,7 +64,6 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
         }
     }
     
-  
     if(count($v->getErrors())){
         //if errors, add them to session and redirect back
         $_SESSION['errors'] = $v->getErrors();

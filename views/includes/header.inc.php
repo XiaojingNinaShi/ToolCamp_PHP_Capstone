@@ -15,9 +15,7 @@
   <?php elseif($slug==='rewards') : ?>
     <link rel="stylesheet" href="css/rewards.css"/> 
   <?php elseif($slug==='shipment') : ?>
-    <link rel="stylesheet" href="css/shipment.css"/> 
-  <?php elseif($slug==='contact') : ?>
-    <link rel="stylesheet" href="css/contact.css"/> 
+    <link rel="stylesheet" href="css/shipment.css"/>  
   <?php elseif($slug==='register') : ?>
     <link rel="stylesheet" href="css/register.css"/> 
   <?php elseif($slug==='profile') : ?>

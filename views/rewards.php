@@ -26,17 +26,17 @@
       <!--4 steps rewards collecting and redeeming process-->
       <div class="row" id="rewards-icons">
         <div class="col-3">
-          <div class="card" style="min-height: 250px;">
+          <div class="card" style="min-height: 280px;">
             <i class="bi bi-person-circle text-center p-3" style="font-size: 3em;"></i>
             <div class="card-body">
               <h5 class="card-title text-center">Create An Account</h5>
-              <p class="card-text">To get started, <a href="#">join now</a>.You can also download our APP.</p>
+              <p class="card-text">To get started, <a href="/?page=register">join now</a>.You can also download our APP.</p>
             </div>
           </div>
         </div>
 
         <div class="col-3">
-          <div class="card" style="min-height: 250px;">
+          <div class="card" style="min-height: 280px;">
             <i class="bi bi-cash-stack text-center p-3" style="font-size: 3em;"></i>
             <div class="card-body">
               <h5 class="card-title text-center">Order&amp;Pay</h5>
@@ -46,7 +46,7 @@
         </div>
 
         <div class="col-3">
-          <div class="card" style="min-height: 250px;">
+          <div class="card" style="min-height: 280px;">
             <i class="bi bi-star-fill text-center p-3" style="font-size: 3em;"></i>
             <div class="card-body">
               <h5 class="card-title text-center">Earn Stars</h5>
@@ -56,7 +56,7 @@
         </div>
         
         <div class="col-3">
-          <div class="card" style="min-height: 250px;">
+          <div class="card" style="min-height: 280px;">
             <i class="bi bi-gift-fill text-center p-3" style="font-size: 3em;"></i>
             <div class="card-body">
               <h5 class="card-title text-center">Claim Rewards</h5>

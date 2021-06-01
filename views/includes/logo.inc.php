@@ -16,7 +16,7 @@
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-person-circle fs-4"></i></a>
               <div class="dropdown-menu">
                 <?php 
-                if(isset($_SESSION['priv_level']) && $_SESSION['priv_level'] == 0):
+                if(isset($_SESSION['priv_level']) && $_SESSION['priv_level'] == 2):
                 echo '<a class="dropdown-item" href="/?page=profile">Profile</a>';
                 echo '<a class="dropdown-item" href="?signout=true">Sign Out</a>';
 

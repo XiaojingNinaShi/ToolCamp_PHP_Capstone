@@ -18,12 +18,7 @@ if($_GET['tea_id']){
     $tea = oneTea($dbh, intval($_GET['tea_id']));
 }
 
-
-// Method 1:
-// $_SESSION['bag'][$tea['id']] = $tea;
-// $item['qty'] = $_POST['quantity'];
-
-// Method 2:
+// save bag info into $_SESSION['bag']
 $item=[];
 $item['id'] = $tea['id'];
 $item['image'] = $tea['image'];
@@ -32,7 +27,6 @@ $item['price'] = $tea['price'];
 $item['qty'] = $_POST['quantity'] ?? 1;  //set default quantity to 1 
 
 $_SESSION['bag'][$tea['id']] = $item;
-// Method3: or make a class --- next step
 
 flashMsg('info','Product added to shopping bag.');
 

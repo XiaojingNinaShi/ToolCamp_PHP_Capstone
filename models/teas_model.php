@@ -150,7 +150,13 @@ function allTeasbyCaffeine(PDO $dbh, string $caffeine):array
     return $stmt->fetchAll() ?? [];
 }
 
-
+/**
+ * Search a product using fulltex. This is for front end customer search
+ *
+ * @param PDO $dbh
+ * @param string $search_term
+ * @return array
+ */
 function searchTea(PDO $dbh, string $search_term):array
 {
     $query = "SELECT * FROM teas 
@@ -161,6 +167,33 @@ function searchTea(PDO $dbh, string $search_term):array
     $stmt = $dbh->prepare($query);
     $params = array(
         ':search_term' => $search_term
+    );
+    $stmt->execute($params);
+    return $stmt->fetchAll() ?? [];
+}
+
+
+/**
+ * Search a product using like. This is for back end amdin search
+ *
+ * @param PDO $dbh
+ * @param string $search_term
+ * @return array
+ */
+function adminSearchTea(PDO $dbh, string $search_term):array
+{
+    $query = "SELECT * FROM teas 
+            WHERE deleted_at IS NULL
+            AND
+            (name LIKE :search_term
+            OR
+            id LIKE :search_term
+            OR 
+            SKU LIKE :search_term)
+            ";
+    $stmt = $dbh->prepare($query);
+    $params = array(
+        ':search_term' => '%' . $search_term . '%'
     );
     $stmt->execute($params);
     return $stmt->fetchAll() ?? [];
@@ -214,9 +247,9 @@ function addTea(PDO $dbh, array $post):int
 function editTea(PDO $dbh, array $post):int
 {
     try{
-        $image = ' ';
+        $image = '';
         if(!empty($post['image'])){
-            $image = 'image = :image';
+            $image = 'image = :image,';
         }
         
         $query = "UPDATE teas
@@ -231,8 +264,8 @@ function editTea(PDO $dbh, array $post):int
                 organic = :organic,
                 ingredients = :ingredients,
                 description = :description,
-                SKU = :SKU,
                 {$image}
+                SKU = :SKU
                 WHERE
                 teas.id = :id
                 ";

@@ -44,7 +44,7 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
             $insert_id = insertCustomer($dbh,$_POST);
             // dd($insert_id);
             if($insert_id){
-                $_SESSION['priv_level'] = 0;
+                $_SESSION['priv_level'] = 2;
                 $_SESSION['user'] = $_POST['email'];
                 flashMsg('success', 'You have successfully Registered!');    
                 // redirect to profile page

@@ -1,17 +1,37 @@
 <?php
 
 class FileLogger implements ILogger{
-    protected $fh;
+    protected $path;
     protected $event;
+    protected $lines=[];
 
-    public function __construct($fh)
+    public function __construct($path)
     {
-        $this->fh = $fh;
+        $this->path = $path;
     }
 
     public function write($event)
     {
-        fputs($this->fh, $event);
-        fclose($this->fh);
+        $fh = fopen($this->path, 'a');
+        fputs($fh, $event);
+        fclose($fh);
+    }
+
+    public function get($num):array
+    {
+        $fh = fopen($this->path, 'r');
+        while($line = fgets($fh)){
+            $this->lines[] = $line;
+        };
+
+        // dd($this->lines);
+        // die;
+
+        $newLines = [];
+        for($i=0; $i<=$num; $i++){
+            $newLines[]['event'] = array_pop($this->lines);
+        }
+        fclose($fh);
+        return $newLines ?? [];
     }
 }
