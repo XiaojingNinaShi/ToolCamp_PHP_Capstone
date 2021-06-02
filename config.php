@@ -35,7 +35,7 @@ ini_set('error_reporting', E_ALL);
 //To create a user in MySQL
 //mysql -u root;
 //create user 'nina'@'%' identified by 'nina0908';
-//grant all on movies.* to 'nina'@'%';
+//grant all on capstone.* to 'nina'@'%';
 
 // Create database connection
 // define('DB_DSN', 'mysql:host=mariadb;dbname=capstone');
@@ -48,7 +48,7 @@ try {
     $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch(Exception $e) {
     echo '<pre>';
-    print_r($e->getTrace());
+    print_r($e->getMessage());
     echo '</pre>';
 } 
 

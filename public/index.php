@@ -80,5 +80,5 @@ try{
     require $path;
 
 }catch(Exception $e){
-    dd($e->getTrace());
+    print_r($e->getMessage());
 }

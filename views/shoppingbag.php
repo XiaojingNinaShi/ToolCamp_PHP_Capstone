@@ -31,15 +31,15 @@
                             <form action="/?page=update_bag" method="post" novalidate autocomplete="off" id="add_to_bag_form">
                                 <div class="d-flex justify-content-between">
                                     <select class="form-control mr-1" name="quantity">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
+                                        <option value="1" <?=(!empty($product['qty']) && $product['qty']==='1') ? 'selected' : '';?>>1</option>
+                                        <option value="2" <?=(!empty($product['qty']) && $product['qty']==='2') ? 'selected' : '';?>>2</option>
+                                        <option value="3" <?=(!empty($product['qty']) && $product['qty']==='3') ? 'selected' : '';?>>3</option>
+                                        <option value="4" <?=(!empty($product['qty']) && $product['qty']==='4') ? 'selected' : '';?>>4</option>
+                                        <option value="5" <?=(!empty($product['qty']) && $product['qty']==='5') ? 'selected' : '';?>>5</option>
+                                        <option value="6" <?=(!empty($product['qty']) && $product['qty']==='6') ? 'selected' : '';?>>6</option>
+                                        <option value="7" <?=(!empty($product['qty']) && $product['qty']==='7') ? 'selected' : '';?>>7</option>
+                                        <option value="8" <?=(!empty($product['qty']) && $product['qty']==='8') ? 'selected' : '';?>>8</option>
+                                        <option value="9" <?=(!empty($product['qty']) && $product['qty']==='9') ? 'selected' : '';?>>9</option>
                                     </select>
                                     <input type="hidden" name="tea_id" value="<?=e($product['id'])?>">
                                     <button type="submit" class="btn btn-sm btn-warning"><i class="bi bi-arrow-repeat"></i></button>
